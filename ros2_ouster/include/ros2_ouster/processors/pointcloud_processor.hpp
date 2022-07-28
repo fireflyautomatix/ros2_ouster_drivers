@@ -70,8 +70,10 @@ public:
     _cloud_filtered = _filter_zero_points
       ? std::make_unique<Cloud>(_width * _height, 1)
       : nullptr;
+    rclcpp::PublisherOptions po;
+    po.use_intra_process_comm = rclcpp::IntraProcessSetting::Enable;
     _pub = _node->create_publisher<sensor_msgs::msg::PointCloud2>(
-      "points", qos);
+      "points", qos, po);
   }
 
   /**
