@@ -59,6 +59,14 @@ namespace ouster {
       TIME_FROM_PTP_1588
     };
 
+    enum UDPProfileLidar
+    {
+      LEGACY = 0,
+      RNG19_RFL8_SIG16_NIR16,
+      RNG19_RFL8_SIG16_NIR16_DUAL,
+      RNG15_RFL8_NIR8
+    };
+
     enum config_flags : uint8_t 
     {
       CONFIG_UDP_DEST_AUTO = (1 << 0),
@@ -105,6 +113,7 @@ namespace ouster {
       uint32_t columns_per_frame;
       std::vector < int > pixel_shift_by_row;
       ColumnWindow column_window;
+      UDPProfileLidar udp_profile_lidar;
     };
 
     struct sensor_info

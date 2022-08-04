@@ -75,6 +75,14 @@ const std::array<std::pair<NMEABaudRate, std::string>, 2>
     {BAUD_115200, "BAUD_115200"}
   }};
 
+const std::array<std::pair<UDPProfileLidar, std::string>, 4>
+  udp_profile_lidar = {{
+	{LEGACY, "LEGACY"},
+	{RNG19_RFL8_SIG16_NIR16, "RNG19_RFL8_SIG16_NIR16"},
+	{RNG19_RFL8_SIG16_NIR16_DUAL, "RNG19_RFL8_SIG16_NIR16_DUAL"},
+	{RNG15_RFL8_NIR8, "RNG15_RFL8_NIR8"}
+  }};
+
 }  // namespace
 
 bool operator==(const data_format & lhs, const data_format & rhs)
@@ -83,7 +91,8 @@ bool operator==(const data_format & lhs, const data_format & rhs)
          lhs.columns_per_packet == rhs.columns_per_packet &&
          lhs.columns_per_frame == rhs.columns_per_frame &&
          lhs.pixel_shift_by_row == rhs.pixel_shift_by_row && 
-         lhs.column_window == rhs.column_window;
+         lhs.column_window == rhs.column_window &&
+	 lhs.udp_profile_lidar == rhs.udp_profile_lidar;
 }
 
 bool operator!=(const data_format & lhs, const data_format & rhs)
